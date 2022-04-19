@@ -1,0 +1,8 @@
+
+describe('Login to Lifebit website', ()=>{
+    it('Should render the website', ()=>{
+       cy.visit('https://www.vouchercodes.co.uk/'), // renders VC landing page
+       cy.url().should('include','Edrepository'),  //this should fail
+       cy.get('input[role='combobox']')
+        })
+});
