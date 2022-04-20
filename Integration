@@ -1,8 +1,20 @@
+/// <reference types="cypress" />
 
-describe('Login to Lifebit website', ()=>{
-    it('Should render the website', ()=>{
-       cy.visit('https://www.vouchercodes.co.uk/'), // renders VC landing page
-       cy.url().should('include','Edrepository'),  //this should fail
-       cy.get('input[role='combobox']')
-        })
-});
+describe("Test VC site", () => {
+    it("Should be able to submit a successfully render the page and type in the search field", () => {
+//cypress code for this test goes here...
+        cy.visit("https://www.vouchercodes.co.uk/"),
+        cy.get('.h-11').type("London Restaurant"),
+        cy.get("input[role='combobox']").click(),
+//assersion should pass
+        cy.get('[data-qa="el:topOffersSection"] > .items-center > .leading-6').contains('Top Offers')
+        cy.get('[title="Go to London Theatre Direct page"] > .rounded').click(),
+        cy.get('#offer-4781828 > .pt-3 > .flex-grow > .flex').click()
+    });
+})
+
+
+//=============================
+//it runs, with an error in the end as required.
+//but your site may need to whitelist cypress runners as it blocks out externation automation run
+//=============================
